@@ -19,10 +19,13 @@ public class Fibonanci {
     public static void main(String[] args) {
         int n = ValidationUtil.getInt("Please Enter number for Fibonanci: ", "Error");
         FibonanciCaculate fibonanciCaculate = new FibonanciCaculate();
-        System.out.print("The Fibonanci line is: ");
+        System.out.println("The Fibonanci line is: ");
+
         for (int i = 0; i < n; i++) {
+            // In kết quả kèm dấu phẩy hoặc khoảng trắng cho dễ nhìn
             System.out.print(fibonanciCaculate.Fibonanci(i) + " ");
         }
+        System.out.println(); // Xuống dòng khi kết thúc
     }
 
 }
