@@ -6,6 +6,8 @@ package controller;
 
 import bo.FruitInputer;
 import bo.FruitManager;
+import bo.OrderInputer;
+import bo.OrderManager;
 import entity.Fruit;
 import java.util.List;
 import util.ValidationUtil;
@@ -19,9 +21,12 @@ public class FruitController {
 
     private FruitManager fruitManager;
     private FruitInputer fruitInputer;
+    private OrderManager orderManager;
+    private OrderInputer orderInputer;
 
     public FruitController() {
         fruitManager = new FruitManager();
+        orderManager = new OrderManager();
     }
 
     public Fruit inputFruit() {
@@ -37,4 +42,7 @@ public class FruitController {
         return null;
     }
 
+    public ArrayList<Fruit> getFruits() {
+        return fruitManager.getFruits();
+    }
 }

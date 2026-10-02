@@ -29,7 +29,7 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public double getAmoun() {
+    public double getAmount() {
         return fruit.getPrice() * quantity;
     }
 

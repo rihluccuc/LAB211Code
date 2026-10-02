@@ -4,6 +4,7 @@
  */
 package bo;
 
+import entity.Order;
 import util.ValidationUtil;
 
 /**
@@ -12,30 +13,15 @@ import util.ValidationUtil;
  */
 public class OrderInputer {
 
-    public int inputFruitId() {
-        return ValidationUtil.getInt(
-                "Please select item: ",
-                "Please only input number!",
-                "Invalid ID!",
-                1,
-                Integer.MAX_VALUE
-        );
+    private Order o;
+
+    public OrderInputer() {
+        o = new Order();
     }
 
-    public int inputQuantity() {
-        return ValidationUtil.getInt(
-                "Please input quantity: ",
-                "Please only input number!",
-                "Quantity must be greater than 0!",
-                1,
-                Integer.MAX_VALUE
-        );
-    }
-
-    public String inputCustomerName() {
-        return ValidationUtil.getNonEmptyString(
-                "Input your name: "
-        );
+    public Order inputQuantity() {
+        o.setQuantity(ValidationUtil.getInt("Please input quantity: ", "Please only input number!", "Quantity must be greater than 0", 1, Integer.MAX_VALUE));
+        return o;
     }
 
 }
