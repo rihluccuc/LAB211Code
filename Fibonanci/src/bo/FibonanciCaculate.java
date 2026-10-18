@@ -5,7 +5,8 @@
 package bo;
 
 import java.math.BigInteger;
-
+import java.util.List;
+import java.util.ArrayList;
 /**
  *
  * @author datkh
@@ -13,7 +14,7 @@ import java.math.BigInteger;
 public class FibonanciCaculate {
 
     // Mảng dùng để lưu các số Fibonacci đã tính (tối đa 1000 phần tử)
-    private BigInteger[] memo = new BigInteger[1000];
+    private final List<BigInteger> memo = new ArrayList<>();
 
     public BigInteger Fibonanci(int n) {
         if (n <= 0) {
@@ -23,13 +24,19 @@ public class FibonanciCaculate {
             return BigInteger.ONE;
         }
 
-        // Nếu số này đã được tính rồi, trả về ngay lập tức không cần tính lại
-        if (memo[n] != null) {
-            return memo[n];
+        // ArrayList không tự có chỉ số n, nên phải thêm chỗ trống (null) cho đủ
+        while (memo.size() <= n) {
+            memo.add(null);
         }
 
-        // Đệ quy và lưu kết quả lại vào mảng memo
-        memo[n] = Fibonanci(n - 1).add(Fibonanci(n - 2));
-        return memo[n];
+        // Đã tính rồi thì trả về ngay
+        if (memo.get(n) != null) {
+            return memo.get(n);
+        }
+
+        // Đệ quy rồi lưu kết quả vào đúng vị trí n
+        BigInteger result = Fibonanci(n - 1).add(Fibonanci(n - 2));
+        memo.set(n, result);
+        return result;
     }
 }
